@@ -1,0 +1,8 @@
+<a href="/">
+{{#if common.logo }}
+	<img src="{{common.logo}}" alt="{{common.brandname}}" />
+{{/if}}
+{{#unless common.logo}}
+	<p>{{common.brandname}}</p>
+{{/unless}}
+</a>

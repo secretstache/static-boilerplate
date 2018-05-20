@@ -1,0 +1,22 @@
+<section class="hero-unit{{#ifequal hero_unit_option 'bgcolor'}} bg-{{hero_unit_bgcolor}}{{/ifequal}}{{#ifequal hero_unit_option 'bgimage'}} bg-image{{/ifequal}}"{{#ifequal hero_unit_option 'bgimage'}} style="background-image: url({{hero_unit_bgimage}})"{{/ifequal}}>
+	{{#ifequal hero_unit_option 'bgimage'}}
+	<div class="overlay"></div>
+	{{/ifequal}}
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x align-center">
+			<div class="cell small-11 medium-12">
+				<header class="component stack-order-1">
+					<h1 class"headline">{{hero_unit_headline}}</h1>
+					{{#if hero_unit_subheadline }}
+					<h2 class"subheadline">{{hero_unit_subheadline}}</h2>
+					{{/if}}
+				</header>
+				{{#if show_hero_unit_button }}
+				<div class="component buttons">
+					<a class="button" href="{{hero_unit_button_url}}">{{hero_unit_button_text}}</a>
+				</div>
+				{{/if}}
+			</div>
+		</div>
+	</div>
+</section>

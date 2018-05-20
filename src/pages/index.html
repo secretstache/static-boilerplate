@@ -1,0 +1,65 @@
+---
+meta_title: Home Page
+body_classes: home
+
+show_hero_unit: true
+hero_unit_option: bgimage
+hero_unit_bgimage: "/assets/images/cms/hero-bg.jpg"
+hero_unit_headline: The Headline
+hero_unit_subheadline: The Subheadline
+show_hero_unit_button: true
+hero_unit_button_text: Learn More!
+hero_unit_button_url: "http://secretstache.com"
+---
+
+<section class="content-block">
+		<div class="grid-container">
+			<div class="grid-x grid-margin-x align-center">
+				<div class="cell small-11 medium-12">
+					{{> header-component headline="The Section Header" subheadline="The Section Subheadline" classes="align-center" }}
+				</div>
+			</div>
+			<div class="grid-x grid-margin-x has-2-cols align-center">
+				<div class="cell small-11 medium-6">
+					<div class="inner">
+						{{> header-component headline="Column One Header" }}
+						{{> default-component }}
+					</div>
+				</div>
+				<div class="cell small-11 medium-6">
+					<div class="inner">
+						{{> image-component }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+<section class="content-block">
+	<div class="grid-container">
+		<div class="grid-x grid-margin-x align-center">
+			<div class="cell small-11 medium-12">
+				<div class="inner">
+					{{> header-component headline="All of the components" classes="stack-order-1"}}
+					<!-- 
+					todo: A better way to handle multiple paragraphs
+					url: http://handlebarsjs.com/partials.html#partial-context 
+					-->
+					{{> default-component content="<p>Default Component</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet dolor in laoreet interdum. Sed id mi vel velit hendrerit finibus ut id est. Vestibulum condimentum dui ipsum, ac malesuada sem imperdiet non. Quisque varius magna non tortor dapibus molestie. Aenean tincidunt sem sit amet odio vehicula aliquam. Vivamus fringilla vehicula justo, vitae fringilla diam bibendum a. Donec convallis erat sed tellus convallis condimentum.</p>" }}
+					<!-- 
+					todo: Support for multiple buttons
+					-->
+					{{> buttons-component label="Button Component" link="/destination.html" }}
+					<!-- 
+					note: If not parameters are passed we can have defaults for quickly building templates
+					-->
+					{{> image-component }}
+
+					{{> video-component src="https://www.youtube.com/embed/02J5A3r-Bdk" classes="youtube" }}
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+

@@ -1,0 +1,91 @@
+body {
+  background: $outer-bg-color;
+  color: $primary-font-color;
+  font-family: $primary-font-family;
+  font-size: $default-font-size;
+  font-weight: normal;
+}
+
+img[class*="wp-image-"],
+img[class^="wp-image-"] {
+  @include responsive-margin("bottom", $base-margin/2);
+}
+
+.alignnone {
+  margin-left: 0;
+  margin-right: 0;
+  max-width: 100%;
+  height: auto;
+}
+
+.aligncenter {
+  @include responsive-margin("bottom", $base-margin/2);
+  display: block;
+  height: auto;
+}
+
+.alignleft,
+.alignright {
+  height: auto;
+}
+
+@include breakpoint(medium) {
+  // Only float if not on an extra small device
+  .alignleft {
+    float: left;
+    margin-right: ($base-margin / 2);
+  }
+  .alignright {
+    float: right;
+    margin-left: ($base-margin / 2);
+  }
+}
+
+.bg-grey-light {
+  background-color: $grey-light;
+}
+
+.bg-dark,
+.bg-image {
+  color: $reverse-font-color;
+}
+
+.overlay {
+	background: rgba(0, 0, 0, 0.5);
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+@include breakpoint(medium) {
+  section[class^="thin-"] .main.grid-x,
+  [class*="thin-"] .main.grid-x {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  section.thin-90 .main.grid-x {
+    width: 90%;
+  }
+  section.thin-80 .main.grid-x {
+    width: 80%;
+  }
+  section.thin-70 .main.grid-x {
+    width: 70%;
+  }
+  section.thin-60 .main.grid-x {
+    width: 60%;
+  }
+  section.thin-50 .main.grid-x {
+    width: 50%;
+  }
+}
+
+@include breakpoint(small only) {
+  .grid-margin-x.align-left,
+  .grid-margin-x.align-justify,
+  .grid-margin-x.align-right {
+    justify-content: center;
+  }
+}
