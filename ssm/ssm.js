@@ -30,9 +30,9 @@ program
     .command('add-component <componentName>')
     .alias('add')
     .description('Add component to components directory')
-    .option('-js', 'Add component without .js')
-    .option('-scss', 'Add component without scss')
-    .option('-html', 'Add component without html')
+    .option('-j, --js', 'Add component without .js')
+    .option('-c, --scss', 'Add component without scss')
+    .option('-h, --html', 'Add component without html')
     .action((componentName, options) => {require('./lib/add-component')(componentName, options);});
 
 program

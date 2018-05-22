@@ -74,7 +74,7 @@ function isComponentExist(newComponentPath) {
  */
 function generateBaseFiles(newComponentPath, commandOptions) {
     const newComponentFolder = `${newComponentPath}/${newComponentName}`;
-
+  
     if (!commandOptions.js) {
         fs.appendFileSync(`${newComponentPath.js}/${newComponentName}.js`, '\n');
     }
