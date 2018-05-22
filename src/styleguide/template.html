@@ -5,18 +5,19 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Style Guide</title>
-	<link rel="stylesheet" href="assets/css/main.css">
+	<link rel="stylesheet" href="assets/styles/main.css">
 	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
 
 	<!-- Style guide-specific CSS goes here. -->
 	<style>
 		/* This styles the sticky table of contents menu */
-
+		.table-of-contents {
+			background: #e8e8e8;
+		}
 		.table-of-contents .is-active {
 			background: #2199e8;
 			color: #fefefe;
 		}
-
 		/* This styles individual sections of the style guide */
 
 		.ss-section:not(:last-child) {
@@ -74,37 +75,31 @@
 			height: 100px;
 			margin-bottom: 0.42857rem;
 		}
+
+	
+		h1 + hr {
+
+		}
 	</style>
 </head>
 
-<body>
-
-	<div class="grid-container">
-		<div class="grid-x grid-margin-x">
-			<div class="cell">
-				<h1>Client Style Guide</h1>
-				<p class="lead">This style guide was built with Foundation for Sites. For more information on how to use this responsive front-end framework,
-					check out the documentation, get help from the Foundation community, or request immediate technical support.</p>
-				<a href="http://foundation.zurb.com/docs/" class="button">Visit the Docs</a>
-				<a href="http://foundation.zurb.com/forum/" class="secondary button">Foundation Forum</a>
-				<a href="http://foundation.zurb.com/business/business-support.html" class="secondary button">Technical Support</a>
+<body class="style-body">
+		<div class="table-of-contents-container" data-sticky-container>
+			<div class="table-of-contents" data-sticky data-margin-top="0">
+				<ul class=" menu align-center" data-magellan>
+					{{#each pages}}
+					<li>
+						<a href="#{{ anchor }}">{{ title }}</a>
+					</li>
+					{{/each}}
+				</ul>
 			</div>
 		</div>
 
+	<div class="grid-container">
 		<div class="grid-x grid-margin-x" id="styleguide">
-			<div class="cell large-3 medium-4" data-sticky-container>
-				<div class="table-of-contents" data-sticky data-top-anchor="styleguide:top">
-					<ul class="vertical menu" data-magellan>
-						{{#each pages}}
-						<li>
-							<a href="#{{ anchor }}">{{ title }}</a>
-						</li>
-						{{/each}}
-					</ul>
-				</div>
-			</div>
-
-			<div class="cell large-9 medium-8">
+		
+			<div class="cell large-12">
 				{{#each pages}}
 				<section class="ss-section" id="{{ anchor }}" data-magellan-target="{{ anchor }}">
 					{{ body }}
@@ -114,7 +109,7 @@
 		</div>
 	</div>
 
-	<script src="assets/js/main.js"></script>
+	<script src="assets/scripts/main.js"></script>
 </body>
 
 </html>
