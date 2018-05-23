@@ -151,7 +151,7 @@ function javascript() {
 			.on('error', e => { console.log(e); })
 		))
 		.pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-		.pipe($.concat('main.js'))
+		//.pipe($.concat('main.js'))
 		.pipe(gulp.dest(PATHS.dist + '/assets/scripts'));
 }
 

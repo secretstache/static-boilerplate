@@ -123,10 +123,10 @@ function createComponent(commandOptions) {
  * @param  {String} componentName The name of new component
  * @param  {Object} options       Inquirer options
  */
-module.exports = function addComponent(componentName, options) {
-    console.log('\n');
 
-   const validateResult = ssmUtils.validateFolderName(componentName);
+module.exports = function addComponent(componentName, options) {
+    
+    const validateResult = ssmUtils.validateFolderName(componentName);
 
     // If componentName has depricated symbols, log the error
     if (typeof validateResult === 'string') {
