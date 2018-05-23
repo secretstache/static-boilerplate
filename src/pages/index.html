@@ -51,13 +51,19 @@ hero_unit_button_url: "http://secretstache.com"
 					todo: A better way to handle multiple paragraphs
 					url: http://handlebarsjs.com/partials.html#partial-context 
 					-->
-					{{> default content="<p>Default Component</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet dolor in laoreet interdum. Sed id mi vel velit hendrerit finibus ut id est. Vestibulum condimentum dui ipsum, ac malesuada sem imperdiet non. Quisque varius magna non tortor dapibus molestie. Aenean tincidunt sem sit amet odio vehicula aliquam. Vivamus fringilla vehicula justo, vitae fringilla diam bibendum a. Donec convallis erat sed tellus convallis condimentum.</p>" }}
+
+					{{#> default }}
+						<p>Default Component</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet dolor in laoreet interdum. Sed id mi vel velit hendrerit finibus ut id est. Vestibulum condimentum dui ipsum, ac malesuada sem imperdiet non. Quisque varius magna non tortor dapibus molestie. Aenean tincidunt sem sit amet odio vehicula aliquam. Vivamus fringilla vehicula justo, vitae fringilla diam bibendum a. Donec convallis erat sed tellus convallis condimentum.</p>
+					{{/default}}
+
 					<!-- 
 					todo: Support for multiple buttons
 								Maybe something like buttons=2 but then how would we pass the label/url data?
 					-->
-					{{> buttons label="Button Component" url="/destination.html" }}
-					<!-- 
+			
+					{{{ buttons classes="template1 template2" labels="Button Component, Button Component" urls="destination.html, test.html"}}}
+					<!--   
 					note: If not parameters are passed we can have defaults for quickly building templates
 					-->
 					{{> image }}
