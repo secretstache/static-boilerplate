@@ -1,3 +1,4 @@
+// styleguide:ignore:start
 @charset 'utf-8';
 
 @import 'settings';
@@ -51,6 +52,7 @@
 
 @include motion-ui-transitions;
 @include motion-ui-animations;
+// styleguide:ignore:end
 
 @import 'common/styleguide';
 @import 'common/mixins';
