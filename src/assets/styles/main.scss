@@ -52,12 +52,14 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
+
 @import 'common/styleguide';
 @import 'common/mixins';
 @import 'common/index';
 @import 'common/typography';
 @import 'common/offcanvas';
-@import 'common/header';
+@import 'common/site-header';
+@import 'common/primary-navigation';
 @import 'common/hero-unit';
 @import 'common/footer';
 

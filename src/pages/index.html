@@ -21,19 +21,19 @@ hero_unit_button_url: "http://secretstache.com"
 		<div class="grid-container">
 			<div class="grid-x grid-margin-x align-center">
 				<div class="cell small-11 medium-12">
-					{{> section-header-component headline="The Section Header" subheadline="The Section Subheadline" classes="align-center" }}
+					{{> section-header headline="The Section Header" subheadline="The Section Subheadline" classes="align-center" }}
 				</div>
 			</div>
 			<div class="grid-x grid-margin-x has-2-cols align-center">
 				<div class="cell small-11 medium-6">
 					<div class="inner">
-						{{> header-component headline="Column One Header" }}
-						{{> default-component }}
+						{{> header headline="Column One Header" }}
+						{{> default }}
 					</div>
 				</div>
 				<div class="cell small-11 medium-6">
 					<div class="inner">
-						{{> image-component }}
+						{{> image }}
 					</div>
 				</div>
 			</div>
@@ -46,23 +46,29 @@ hero_unit_button_url: "http://secretstache.com"
 		<div class="grid-x grid-margin-x align-center">
 			<div class="cell small-11 medium-12">
 				<div class="inner">
-					{{> header-component headline="All of the components" classes="stack-order-1"}}
+					{{> header headline="All of the components" classes="stack-order-1"}}
 					<!-- 
 					todo: A better way to handle multiple paragraphs
 					url: http://handlebarsjs.com/partials.html#partial-context 
 					-->
-					{{> default-component content="<p>Default Component</p><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet dolor in laoreet interdum. Sed id mi vel velit hendrerit finibus ut id est. Vestibulum condimentum dui ipsum, ac malesuada sem imperdiet non. Quisque varius magna non tortor dapibus molestie. Aenean tincidunt sem sit amet odio vehicula aliquam. Vivamus fringilla vehicula justo, vitae fringilla diam bibendum a. Donec convallis erat sed tellus convallis condimentum.</p>" }}
+
+					{{#> default }}
+						<p>Default Component</p>
+						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam imperdiet dolor in laoreet interdum. Sed id mi vel velit hendrerit finibus ut id est. Vestibulum condimentum dui ipsum, ac malesuada sem imperdiet non. Quisque varius magna non tortor dapibus molestie. Aenean tincidunt sem sit amet odio vehicula aliquam. Vivamus fringilla vehicula justo, vitae fringilla diam bibendum a. Donec convallis erat sed tellus convallis condimentum.</p>
+					{{/default}}
+
 					<!-- 
 					todo: Support for multiple buttons
 								Maybe something like buttons=2 but then how would we pass the label/url data?
 					-->
-					{{> buttons-component label="Button Component" url="/destination.html" }}
-					<!-- 
+			
+					{{{ buttons classes="template1 template2" labels="Button Component, Button Component" urls="destination.html, test.html"}}}
+					<!--   
 					note: If not parameters are passed we can have defaults for quickly building templates
 					-->
-					{{> image-component }}
+					{{> image }}
 
-					{{> video-component src="https://www.youtube.com/embed/02J5A3r-Bdk" classes="youtube" }}
+					{{> video src="https://www.youtube.com/embed/02J5A3r-Bdk" classes="youtube" }}
 				</div>
 			</div>
 		</div>
@@ -73,23 +79,23 @@ hero_unit_button_url: "http://secretstache.com"
 	<div class="grid-container">
 		<div class="grid-x grid-margin-x align-center">
 			<div class="cell small-11 medium-12">
-				{{> section-header-component headline="A 3 Column Section Headline" classes="align-center" }}
+				{{> section-header headline="A 3 Column Section Headline" classes="align-center" }}
 			</div>
 		</div>
 		<div class="grid-x grid-margin-x align-center">
 			<div class="cell small-11 medium-4">
 				<div class="inner">
-				{{> default-component}}
+				{{> default}}
 				</div>
 			</div>
 			<div class="cell small-11 medium-4">
 				<div class="inner">
-					{{> default-component}}
+					{{> default}}
 				</div>
 			</div>
 			<div class="cell small-11 medium-4">
 				<div class="inner">
-					{{> default-component}}
+					{{> default}}
 				</div>
 			</div>
 		</div>

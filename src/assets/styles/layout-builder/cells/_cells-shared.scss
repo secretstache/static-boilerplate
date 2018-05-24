@@ -1,5 +1,7 @@
-.cell,
-.cell .inner {
-	display: flex;
-	flex-direction: column;
+.cell {
+	.inner {
+		display: flex;
+		flex-direction: column;
+		height: 100%;
+	}
 }

@@ -1,0 +1,10 @@
+<div class="component video{{#if classes}} {{classes}}{{/if}}">
+	<div class="embed-container widescreen">
+		{{#if src}}
+		<iframe width="560" height="315" src="{{src}}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		{{/if}}
+		{{#unless src}}
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/NpEaa2P7qZI" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+		{{/unless}}
+	</div>
+</div>

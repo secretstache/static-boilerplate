@@ -12,6 +12,8 @@ import fs from 'fs';
 import webpackStream from 'webpack-stream';
 import webpack2 from 'webpack';
 import named from 'vinyl-named';
+import styleguide from 'sc5-styleguide';
+
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -27,13 +29,18 @@ function loadConfig() {
 	return yaml.load(ymlFile);
 }
 
+gulp.task('styleguide',
+	gulp.series(styleguideGenerate, styleguideApply));
+
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, copy), styleGuide));
+	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, copy), 'styleguide'));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
-	gulp.series('build', server, watch));
+	gulp.series('build',server, watch));
+
+
 
 // Delete the "dist" folder
 // This happens every time a build starts
@@ -67,6 +74,7 @@ function resetPages(done) {
 	done();
 }
 
+
 // Generate a style guide from the Markdown content and HTML template in styleguide/
 function styleGuide(done) {
 	sherpa('src/styleguide/index.md', {
@@ -74,6 +82,29 @@ function styleGuide(done) {
 		template: 'src/styleguide/template.html'
 	}, done);
 }
+
+function styleguideGenerate() {
+	return gulp.src(PATHS.styleSrc)
+	.pipe(styleguide.generate({
+		title: 'Styleguide',
+		server: false,
+		rootPath: PATHS.style,
+		overviewPath: 'README.md',
+		appRoot: '/styleguide'
+	  }))
+	.pipe(gulp.dest(PATHS.style));
+}
+
+
+function styleguideApply() {
+	return gulp.src('src/assets/styles/main.scss')
+	.pipe($.sass({
+	  includePaths: PATHS.sass
+	}).on('error', $.sass.logError))
+	.pipe(styleguide.applyStyles())
+	.pipe(gulp.dest(PATHS.style));
+}
+
 
 // Compile Sass into CSS
 // In production, the CSS is compressed
@@ -120,6 +151,7 @@ function javascript() {
 			.on('error', e => { console.log(e); })
 		))
 		.pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+		.pipe($.concat('main.js'))
 		.pipe(gulp.dest(PATHS.dist + '/assets/scripts'));
 }
 
@@ -152,8 +184,8 @@ function watch() {
 	gulp.watch(PATHS.assets, copy);
 	gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
 	gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
-	gulp.watch('src/assets/styles/**/*.scss').on('all', sass);
+	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, styleguideGenerate, styleguideApply));
 	gulp.watch('src/assets/scripts/**/*.js').on('all', gulp.series(javascript, browser.reload));
 	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, browser.reload));
-	gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
+	//gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
 }

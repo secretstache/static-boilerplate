@@ -19,6 +19,11 @@ UNCSS_OPTIONS:
 PATHS:
   # Path to dist folder
   dist: "dist"  
+  style: "dist/styleguide"
+  styleSrc:
+    - "src/assets/styles/**/*.scss"
+    #- "!src/assets/styles/_settings.scss"
+    #- "!src/assets/styles/main.scss"
   # Paths to static assets that aren't images, CSS, or JavaScript
   assets:
     - "src/assets/**/*"
@@ -30,3 +35,4 @@ PATHS:
   # Paths to JavaScript entry points for webpack to bundle modules
   entries:
     - "src/assets/scripts/main.js"
+    - "src/assets/scripts/layout-builder/components/*.js"
