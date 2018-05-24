@@ -2,7 +2,6 @@
 
 const chalk = require('chalk');
 const os = require('os');
-const fsExtra = require('fs-extra');
 const Spinner = require('cli-spinner').Spinner;
 
 const spinner = new Spinner('%s');
@@ -32,66 +31,6 @@ spinner.restart = function restart() {
 module.exports = {
 
     /**
-     * Check that TARS inited in current directory.
-     * @return {Object}
-     */
-    isTarsInited() {
-        const cwd = process.cwd();
-
-        try {
-            require(`${cwd}/tars-config`);
-        } catch (error) {
-            if (error.code !== 'MODULE_NOT_FOUND') {
-                this.ssmSay(chalk.red('There are some problems with your tars-config.js!\n'), true);
-                console.error(error.stack);
-                return {
-                    inited: true,
-                    error: true
-                };
-            }
-
-            return {
-                inited: false,
-                error: false
-            };
-        }
-
-        return {
-            inited: true,
-            error: false
-        };
-    },
-
-    /**
-     * Gets TARS-config from TARS in current directory.
-     * @return {boolean | object} tars-config
-     */
-    getTarsConfig() {
-        const cwd = process.cwd();
-        const initedStatus = this.isTarsInited();
-
-        if (initedStatus.inited && !initedStatus.error) {
-            return require(`${cwd}/tars-config`);
-        }
-
-        if (!initedStatus.error) {
-            this.tarsNotInitedActions();
-        }
-        return false;
-    },
-
-    getTarsProjectVersion() {
-        const cwd = process.cwd();
-
-        if (this.isTarsInited().inited) {
-            return fsExtra.readJsonSync(`${cwd}/tars.json`).version;
-        }
-
-        this.tarsNotInitedActions();
-        return false;
-    },
-
-    /**
      * Output messages from TARS
      * @param  {String}  message Message to output
      * @param  {Boolean} Stopspinner or restart it
@@ -110,16 +49,6 @@ module.exports = {
         } else {
             console.log(chalk.bold.cyan('[ SSM ]: ') + chalk.bold.white(message));
         }
-    },
-
-    /**
-     * Actions, then TARS is not inited
-     * @return {[type]} [description]
-     */
-    tarsNotInitedActions() {
-        console.log('\n');
-        this.ssmSay(chalk.red('TARS is not inited.'));
-        this.ssmSay(`Use ${chalk.bold.cyan('"tars init"')} to init TARS in current directory.\n`, true);
     },
 
     /**

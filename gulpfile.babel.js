@@ -97,10 +97,10 @@ function styleguideGenerate() {
 
 
 function styleguideApply() {
-	return gulp.src('src/assets/styles/common/_index.scss')
+	return gulp.src('src/assets/styles/main.scss')
 	.pipe($.sass({
-	  errLogToConsole: true
-	}))
+	  includePaths: PATHS.sass
+	}).on('error', $.sass.logError))
 	.pipe(styleguide.applyStyles())
 	.pipe(gulp.dest(PATHS.style));
 }

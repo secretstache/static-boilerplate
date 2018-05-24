@@ -22,8 +22,8 @@ PATHS:
   style: "dist/styleguide"
   styleSrc:
     - "src/assets/styles/**/*.scss"
-    - "!src/assets/styles/_settings.scss"
-    - "!src/assets/styles/main.scss"
+    #- "!src/assets/styles/_settings.scss"
+    #- "!src/assets/styles/main.scss"
   # Paths to static assets that aren't images, CSS, or JavaScript
   assets:
     - "src/assets/**/*"
