@@ -20,14 +20,14 @@ To create compressed, production-ready assets, run `npm run build`.
 
 ### Generator
 
-- To add a new component run `ssm add-component componentName` or `ssm add componentName`. This command will create the files in the following folders:
+- To add a new component run `ssm create-component componentName` or `ssm create componentName`. This command will create the files in the following folders:
    `/src/assets/scripts/layout-builder/components/componentName.js`
    `/src/assets/styles/layout-builder/components/_componentName.scss`
    `/src/partials/layout-builder/components/componentName.html`
 
-- To delete component's files run `ssm remove-component componentName` or `ssm del componentName`. 
+- To delete component's files run `ssm remove-component componentName` or `ssm remove componentName`. 
 
-- To add a new template run `ssm add-template templateName`. This command will create the files in the following folders:
+- To add a new template run `ssm create-template templateName`. This command will create the files in the following folders:
 
    `/src/assets/scripts/layout-builder/templates/templateName.js`
    `/src/assets/styles/layout-builder/templates/_templateName.scss`

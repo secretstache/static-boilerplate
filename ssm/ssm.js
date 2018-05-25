@@ -25,8 +25,8 @@ program
     .usage('[command] [options] \n         Command without flags will be started in interactive mode.');
 
 program
-    .command('add-component <componentName>')
-    .alias('add')
+    .command('create-component <componentName>')
+    .alias('create')
     .description('Add component to components directory')
     .option('-j, --js', 'Add component without .js')
     .option('-c, --scss', 'Add component without scss')
@@ -34,7 +34,7 @@ program
     .action((componentName, options) => {require('./lib/add-component')(componentName, options);});
 
 program
-    .command('add-template <componentName>')
+    .command('create-template <componentName>')
     .description('Add component to components directory')
     .option('-j, --js', 'Add component without .js')
     .option('-c, --scss', 'Add component without scss')
@@ -43,7 +43,7 @@ program
 
 program
     .command('remove-component <componentName>')
-    .alias('del')
+    .alias('remove')
     .description('Delete component from components directory')
     .action((componentName) => {require('./lib/delete-component')(componentName);});
 
