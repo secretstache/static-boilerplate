@@ -52,7 +52,7 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
-
+@import 'common/vars';
 @import 'common/styleguide';
 @import 'common/mixins';
 @import 'common/index';

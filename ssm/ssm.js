@@ -34,9 +34,22 @@ program
     .action((componentName, options) => {require('./lib/add-component')(componentName, options);});
 
 program
-    .command('delete-component <componentName>')
+    .command('add-template <componentName>')
+    .description('Add component to components directory')
+    .option('-j, --js', 'Add component without .js')
+    .option('-c, --scss', 'Add component without scss')
+    .option('-h, --html', 'Add component without html')
+    .action((componentName, options) => {require('./lib/add-template')(componentName, options);});
+
+program
+    .command('remove-component <componentName>')
     .alias('del')
     .description('Delete component from components directory')
     .action((componentName) => {require('./lib/delete-component')(componentName);});
+
+program
+    .command('remove-template <componentName>')
+    .description('Delete component from components directory')
+    .action((componentName) => {require('./lib/delete-template')(componentName);});
 
 program.parse(process.argv);

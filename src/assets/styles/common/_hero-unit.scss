@@ -1,3 +1,31 @@
+// Hero unit
+//
+// Styleguide 5.1
+
+
+// Hero unit with image background 
+//
+// markup:
+//<section class="hero-unit bg-image" style="background-image: url(/assets/images/cms/hero-bg.jpg)">
+//<div class="overlay"></div>
+//<div class="grid-container">
+//    <div class="grid-x grid-margin-x align-center">
+//        <div class="cell small-11 medium-12">				
+//            <header class="component stack-order-1">
+//                <h1 class"headline">Headline</h1>
+//               <h2 class"subheadline">Subheadline</h2>
+//            </header>
+//            <div class="component buttons">
+//                <a class="button" href="#">Button</a>
+//              </div>
+//        </div>
+//    </div>
+//</div>
+//</section>
+//
+// Styleguide 5.1.1
+
+
 section.hero-unit {
   @include responsive-padding("vert", $base-padding);
   position: relative;

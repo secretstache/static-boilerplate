@@ -35,13 +35,6 @@
 // Styleguide 1.2
 
 
-// Text
-//
-// markup:
-//<p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ipsum, tincidunt vel convallis in, suscipit et risus. Morbi erat dolor, mattis at dignissim sed, feugiat sed lorem.</p><p class="{$modifiers}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque massa ipsum, tincidunt vel convallis in, suscipit et risus. Morbi erat dolor, mattis at dignissim sed, feugiat sed lorem.</p>
-//
-// Styleguide 1.3
-
 // Buttons
 //
 // Styleguide 2.0
@@ -220,40 +213,6 @@
 // Styleguide 4.5
 
 
-// colors
-$primary-color: #1779ba;
-$secondary-color: #767676;
-$success-color: #3adb76;
-$warning-color: #ffae00;
-$alert-color: #cc4b37;
-$grey-light: #eeeeee;
-
-// Typography
-$primary-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif; // from F6 settings
-$primary-font-color: $black; // from F6 settings
-$reverse-font-color: $white; // from F6 settings
-$default-font-size: rem-calc(18);
-
-// styleguide:ignore:start
-
-// Utility
-$max-width: rem-calc(1280);
-$header-height: rem-calc(60); // If applicable
-$base-padding: rem-calc(40);
-$base-margin: rem-calc(40);
-$component-margin: $base-margin * 0.75;
-$outer-bg-color: $white; // If applicable
-$gutter-small: map-get($grid-column-gutter, small);
-$gutter-medium: map-get($grid-column-gutter, medium);
-
-// Off Canvas Menu
-$panel-width: 300px !default;
-$panel-background: #777 !default;
-$panel-transition-easing: ease !default;
-$panel-transition-timing: 0.25s !default;
-$panel-content-padding: 60px 0 0 !default;
-$panel-z-index: 9999 !default;
-$panel-shadow: 0.01em 0 0.5em darken($panel-background, 30%) !default;
-$panel-links-color: $white !default;
-$panel-close-button-bg: $primary-color;
-// styleguide:ignore:end
+// Common blocks
+//
+// Styleguide 5.0
