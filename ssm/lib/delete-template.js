@@ -17,9 +17,9 @@ function actionsOnError(error, newComponentPath) {
 
 function getNewComponentPath() {
     let newComponentPath = {};
-    newComponentPath.js = `${cwd}/src/assets/scripts/layout-builder/components/`;
-    newComponentPath.scss = `${cwd}/src/assets/styles/layout-builder/components/`;
-    newComponentPath.html = `${cwd}/src/partials/layout-builder/components/`;
+    newComponentPath.js = `${cwd}/src/assets/scripts/layout-builder/templates/`;
+    newComponentPath.scss = `${cwd}/src/assets/styles/layout-builder/templates/`;
+    newComponentPath.html = `${cwd}/src/partials/layout-builder/templates/`;
   
     return newComponentPath;
 }
@@ -30,7 +30,7 @@ function getNewComponentPath() {
  * @param  {String} componentName The name of new component
  * @param  {Object} options       Inquirer options
  */
-module.exports = function deleteComponent(componentName) {
+module.exports = function deleteTemplate(componentName) {
     
     const newComponentPath = getNewComponentPath();
 
@@ -47,7 +47,7 @@ module.exports = function deleteComponent(componentName) {
 
     });
 
-    ssmUtils.ssmSay(chalk.green(`${componentName} was deleted \n`), true);
+    ssmUtils.ssmSay(chalk.green(`Template ${componentName} was deleted \n`), true);
 
 
 };

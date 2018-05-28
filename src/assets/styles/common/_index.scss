@@ -1,9 +1,34 @@
+%html {
+  font-size: 100%;
+  box-sizing: border-box;
+  *,*:before,*:after {
+      box-sizing: inherit;
+  }
+}
+// Styles for html element in theme
+html {
+  @extend %html;
+}
+
+// Extend common body styles
+%body {
+  font-family: $primary-font-family;
+  margin: 0;
+  font-size: $default-font-size;
+  color: $primary-font-color;
+  font-weight: normal;
+}
+
+// This is for styleguide only
+.sg-common {
+  @extend %html;
+  @extend %body;
+}
+
+
 body {
   background: $outer-bg-color;
-  color: $primary-font-color;
-  font-family: $primary-font-family;
-  font-size: $default-font-size;
-  font-weight: normal;
+  @extend %body;
 }
 
 img[class*="wp-image-"],

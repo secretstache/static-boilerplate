@@ -87,10 +87,14 @@ function styleguideGenerate() {
 	return gulp.src(PATHS.styleSrc)
 	.pipe(styleguide.generate({
 		title: 'Styleguide',
-		server: false,
+		server: true,
 		rootPath: PATHS.style,
-		overviewPath: 'README.md',
-		appRoot: '/styleguide'
+		overviewPath: 'styleguide.md',
+		appRoot: '/styleguide',
+		commonClass: 'sg-common',
+		extraHead: [
+			'<style>body {font-size:18px; margin: 0; padding: 0; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;} .sg-design {display: none;} .sg-footer {display: none;} .sg-search-field {margin-top: 20px;height: 40px;padding: 0 10px;} .sg {box-sizing: border-box;}</style>'
+		]
 	  }))
 	.pipe(gulp.dest(PATHS.style));
 }
@@ -109,7 +113,7 @@ function styleguideApply() {
 // Compile Sass into CSS
 // In production, the CSS is compressed
 function sass() {
-	return gulp.src('src/assets/styles/main.scss')
+	return gulp.src(PATHS.sassEntries)
 		.pipe($.sourcemaps.init())
 		.pipe($.sass({
 			includePaths: PATHS.sass
@@ -122,6 +126,7 @@ function sass() {
 		//.pipe($.if(PRODUCTION, $.uncss(UNCSS_OPTIONS)))
 		.pipe($.if(PRODUCTION, $.cleanCss({ compatibility: 'ie9' })))
 		.pipe($.if(!PRODUCTION, $.sourcemaps.write()))
+		.pipe($.concat('main.css'))
 		.pipe(gulp.dest(PATHS.dist + '/assets/styles'))
 		.pipe(browser.reload({ stream: true }));
 }
@@ -151,7 +156,7 @@ function javascript() {
 			.on('error', e => { console.log(e); })
 		))
 		.pipe($.if(!PRODUCTION, $.sourcemaps.write()))
-		//.pipe($.concat('main.js'))
+		.pipe($.concat('main.js'))
 		.pipe(gulp.dest(PATHS.dist + '/assets/scripts'));
 }
 
@@ -187,5 +192,4 @@ function watch() {
 	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, styleguideGenerate, styleguideApply));
 	gulp.watch('src/assets/scripts/**/*.js').on('all', gulp.series(javascript, browser.reload));
 	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, browser.reload));
-	//gulp.watch('src/styleguide/**').on('all', gulp.series(styleGuide, browser.reload));
 }

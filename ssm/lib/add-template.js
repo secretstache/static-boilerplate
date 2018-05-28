@@ -17,9 +17,9 @@ function actionsOnError(error, newComponentPath) {
 
 function getNewComponentPath() {
     let newComponentPath = {};
-    newComponentPath.js = `${cwd}/src/assets/scripts/layout-builder/components/`;
-    newComponentPath.scss = `${cwd}/src/assets/styles/layout-builder/components/`;
-    newComponentPath.html = `${cwd}/src/partials/layout-builder/components/`;
+    newComponentPath.js = `${cwd}/src/assets/scripts/layout-builder/templates/`;
+    newComponentPath.scss = `${cwd}/src/assets/styles/layout-builder/templates/`;
+    newComponentPath.html = `${cwd}/src/partials/layout-builder/templates/`;
   
     return newComponentPath;
 }
@@ -87,7 +87,7 @@ function generateBaseFiles(newComponentPath, commandOptions) {
 
 
 function successLog() {
-    ssmUtils.ssmSay(chalk.green(`Component "${newComponentName}" has been added.\n`), true);
+    ssmUtils.ssmSay(chalk.green(`Template "${newComponentName}" has been added.\n`), true);
 }
 
 
@@ -123,7 +123,7 @@ function createComponent(commandOptions) {
  * @param  {Object} options       Inquirer options
  */
 
-module.exports = function addComponent(componentName, options) {
+module.exports = function addTemplate(componentName, options) {
     
     const validateResult = ssmUtils.validateFolderName(componentName);
 
