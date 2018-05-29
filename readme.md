@@ -25,6 +25,11 @@ To create compressed, production-ready assets, run `npm run build`.
    `/src/assets/styles/layout-builder/components/_componentName.scss`
    `/src/partials/layout-builder/components/componentName.html`
 
+- `ssm create-component componentName -j` will create all component's files except js file
+- `ssm create-component componentName -c` will create all component's files except scss file
+- `ssm create-component componentName -h` will create all component's files except html file
+- Flags can be combined, for example `ssm create-component componentName -j -h` will create only scss file
+
 - To delete component's files run `ssm remove-component componentName` or `ssm remove componentName`. 
 
 - To add a new template run `ssm create-template templateName`. This command will create the files in the following folders:
