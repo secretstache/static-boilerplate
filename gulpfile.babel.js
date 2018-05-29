@@ -131,20 +131,30 @@ function sass() {
 		.pipe(browser.reload({ stream: true }));
 }
 
+
 let webpackConfig = {
 	module: {
-		rules: [
+	  rules: [
+		{
+		  test: /.js$/,
+		  use: [
 			{
-				test: /.scripts$/,
-				use: [
-					{
-						loader: 'babel-loader'
-					}
-				]
+			  loader: 'babel-loader'
 			}
-		]
-	}
-}
+		  ]
+		}
+	  ]
+	},
+	 plugins:[
+	  new webpack2.ProvidePlugin({
+		  jQuery: 'jquery',
+		  $: 'jquery',
+		  jquery: 'jquery'
+	  })
+	]
+  }
+  
+
 // Combine JavaScript into one file
 // In production, the file is minified
 function javascript() {
