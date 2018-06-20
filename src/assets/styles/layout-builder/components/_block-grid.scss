@@ -1,0 +1,7 @@
+.block-grid {
+    @include responsive-margin('bottom', -$component-margin);
+
+    > .cell {
+        @include responsive-margin('bottom', $component-margin);
+    }
+}

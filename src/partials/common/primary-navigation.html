@@ -1,12 +1,12 @@
 <ul class="dropdown menu show-for-medium" data-dropdown-menu>
 	{{#each common.primary-navigation}}
-		<li class="menu-item">
-			<a href="{{link}}">{{text}}</a>
+		<li class="menu-item {{#ifpage link}} current-menu-item{{/ifpage}}">
+			<a href="{{root}}{{link}}.html">{{text}}</a>
 			{{#if submenu }}
 				<ul class="submenu menu">
 					{{#each submenu-items}}
-						<li class="menu-item">
-							<a href="{{submenu-link}}">{{submenu-text}}</a>
+						<li class="menu-item {{#ifpage link}} current-menu-item{{/ifpage}}">
+							<a href="{{root}}{{submenu-link}}.html">{{submenu-text}}</a>
 						</li>
 					{{/each}}
 				</ul>

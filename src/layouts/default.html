@@ -10,16 +10,20 @@
 </head>
 
 <body{{#if body_classes}} class="{{body_classes}}"{{/if}}>
+	<div class="off-canvas-wrapper">
+		{{> offcanvas}}
 
-	{{> offcanvas}}
-	{{> site-header}}
-	{{#if show_hero_unit }}
-		{{> hero-unit}}
-	{{/if}}
-	<main class="content">
-		{{> body}}
-	</main>
-	{{> footer}}
+		<div class="off-canvas-content" data-off-canvas-content>
+			{{> site-header}}
+			{{#if show_hero_unit }}
+				{{> hero-unit}}
+			{{/if}}
+			<main class="content">
+				{{> body}}
+			</main>
+			{{> footer}}
+		</div>
+	</div>
 
 	<script src="{{root}}assets/scripts/main.js"></script>
 </body>

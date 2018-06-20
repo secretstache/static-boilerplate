@@ -1,6 +1,6 @@
 <div class="component image{{#if classes}} {{classes}}{{/if}}">
 	{{#if src}}
-		<img src="{{src}}" alt="{{alt}}" />
+		<img src="{{root}}{{src}}" alt="{{alt}}" />
 	{{/if}}
 	{{#unless src}}
 		<img src="{{root}}assets/images/cms/placeholder.jpg" alt="A placeholder image" />

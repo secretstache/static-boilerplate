@@ -30,11 +30,11 @@ function loadConfig() {
 }
 
 gulp.task('styleguide',
-	gulp.series(styleguideGenerate, styleguideApply));
+	gulp.series(styleguideGenerate, styleguideApply, styleguideImages, styleguideFonts, styleguideCss ));
 
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, copy), 'styleguide'));
+	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, fonts, copy), 'styleguide'));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -53,6 +53,12 @@ function clean(done) {
 function copy() {
 	return gulp.src(PATHS.assets)
 		.pipe(gulp.dest(PATHS.dist + '/assets'));
+}
+
+// Fonts
+function fonts() {
+	return gulp.src('src/fonts/**/*')
+		.pipe(gulp.dest(PATHS.dist + '/assets/fonts'));
 }
 
 // Copy page templates into finished HTML files
@@ -75,25 +81,19 @@ function resetPages(done) {
 }
 
 
-// Generate a style guide from the Markdown content and HTML template in styleguide/
-function styleGuide(done) {
-	sherpa('src/styleguide/index.md', {
-		output: PATHS.dist + '/styleguide.html',
-		template: 'src/styleguide/template.html'
-	}, done);
-}
-
 function styleguideGenerate() {
 	return gulp.src(PATHS.styleSrc)
 	.pipe(styleguide.generate({
 		title: 'Styleguide',
-		server: true,
+		server: false,
 		rootPath: PATHS.style,
 		overviewPath: 'styleguide.md',
 		appRoot: '/styleguide',
+		rootPath: '/styleguide',
 		commonClass: 'sg-common',
+		disableEncapsulation: true,
 		extraHead: [
-			'<style>body {font-size:18px; margin: 0; padding: 0; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;} .sg-design {display: none;} .sg-footer {display: none;} .sg-search-field {margin-top: 20px;height: 40px;padding: 0 10px;} .sg {box-sizing: border-box;}</style>'
+			'<link rel="stylesheet" href="assets/styles/styleguide.css"><style>body {font-size:18px; margin: 0; padding: 0; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;} .sg-design {display: none;} .sg-footer {display: none;} .sg-search-field {margin-top: 20px;height: 40px;padding: 0 10px;} .sg {box-sizing: border-box;}.sg.sg-section .sg.sg-section-partial {padding: 3em 1em;}</style>'
 		]
 	  }))
 	.pipe(gulp.dest(PATHS.style));
@@ -107,6 +107,21 @@ function styleguideApply() {
 	}).on('error', $.sass.logError))
 	.pipe(styleguide.applyStyles())
 	.pipe(gulp.dest(PATHS.style));
+}
+
+function styleguideImages() {
+	return gulp.src('src/assets/images/**/*')
+	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/images'));
+}
+
+function styleguideFonts() {
+	return gulp.src('src/assets/fonts/**/*')
+	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/fonts'));
+}
+
+function styleguideCss() {
+	return gulp.src(PATHS.dist + '/styleguide/styleguide.css')
+	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/styles'));
 }
 
 
@@ -197,9 +212,10 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
 	gulp.watch(PATHS.assets, copy);
+	gulp.watch('src/assets/fonts/**/*').on('all', gulp.series(fonts, styleguideFonts));;
 	gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
 	gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
-	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, styleguideGenerate, styleguideApply));
+	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, styleguideGenerate, styleguideApply, styleguideCss));
 	gulp.watch('src/assets/scripts/**/*.js').on('all', gulp.series(javascript, browser.reload));
-	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, browser.reload));
+	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, styleguideImages, browser.reload));
 }

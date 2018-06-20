@@ -1,10 +1,10 @@
-<div class="off-canvas right" id="offCanvas" data-toggler=".is-active">
+<div class="off-canvas offcanvas-scale align-center-middle" id="offCanvas" data-off-canvas data-transition="overlap">
 	<ul class="vertical menu">
 		{{#each common.primary-navigation}}
-		<li><a href="{{link}}">{{text}}</a></li>
+		<li><a href="{{root}}{{link}}.html">{{text}}</a></li>
 		{{/each}}
 	</ul>
-	<button class="button off-canvas-close" data-toggle="offCanvas">
-		<img src="assets/images/x.svg" alt="">
+	<button class="close-button off-canvas-close" data-toggle="offCanvas">
+		<img src="{{root}}assets/images/x.svg" alt="">
 	</button>
 </div>

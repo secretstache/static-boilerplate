@@ -4,33 +4,33 @@ copyright: Copyright &copy; Secret Stache Media 2018. All Rights Reserved.
 
 primary-navigation:
   - 
-    link: "/"
+    link: "index"
     text: Home
   - 
-    link: "/about.html"
+    link: "about"
     text: About
     submenu: true
     submenu-items:
       -
-        submenu-link: "/team.html"
+        submenu-link: "team"
         submenu-text: Our Team
       -
-        submenu-link: "/culture.html"
+        submenu-link: "culture"
         submenu-text: Our Culture
       -
-        submenu-link: "/jobs.html"
+        submenu-link: "jobs"
         submenu-text: Available Jobs
   - 
-    link: "/servives.html"
+    link: "servives"
     text: Services
 
 footer-navigation:
   - 
-    link: "/"
+    link: "index"
     text: Home
   - 
-    link: "/about.html"
+    link: "about"
     text: About
   - 
-    link: "/servives.html"
+    link: "servives"
     text: Services  

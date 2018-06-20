@@ -108,9 +108,9 @@ img[class^="wp-image-"] {
 }
 
 @include breakpoint(small only) {
-  .grid-margin-x.align-left,
-  .grid-margin-x.align-justify,
-  .grid-margin-x.align-right {
-    justify-content: center;
-  }
+  // .grid-margin-x.align-left,
+  // .grid-margin-x.align-justify,
+  // .grid-margin-x.align-right {
+  //   justify-content: center;
+  // }
 }
