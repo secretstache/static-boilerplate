@@ -1,0 +1,18 @@
+{
+    "indent_size": 4,
+    "indent_char": " ",
+    "css": {
+        "indent_size": 2
+    },
+    "preserve_newlines": true,
+    "max_preserve_newlines": 2,
+    "unformatted": [],
+    "beautify.language": {
+        "js": {
+            "type": ["javascript", "json"],
+            "filename": [".jshintrc", ".jsbeautifyrc"],
+            "ext": ["js", "json", "jsx"]
+        },
+        "css": ["css", "scss"]
+    }
+}

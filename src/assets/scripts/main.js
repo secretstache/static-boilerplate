@@ -8,7 +8,6 @@ import Foundation from 'foundation-sites';
 // the line below
 //import './lib/foundation-explicit-pieces';
 
-
 $(document).foundation();
 
-$('[data-slick]').slick(); 
+$('[data-slick]').slick();

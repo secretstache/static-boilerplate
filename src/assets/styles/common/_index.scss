@@ -1,10 +1,13 @@
 %html {
   font-size: 100%;
   box-sizing: border-box;
-  *,*:before,*:after {
-      box-sizing: inherit;
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
   }
 }
+
 // Styles for html element in theme
 html {
   @extend %html;
@@ -24,7 +27,6 @@ html {
   @extend %html;
   @extend %body;
 }
-
 
 body {
   background: $outer-bg-color;
@@ -76,12 +78,12 @@ img[class^="wp-image-"] {
 }
 
 .overlay {
-	background: rgba(0, 0, 0, 0.5);
-	position: absolute;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 
 @include breakpoint(medium) {

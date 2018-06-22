@@ -1,8 +1,6 @@
 // Hero unit
 //
 // Styleguide 5.1
-
-
 // Hero unit with image background 
 //
 // markup:
@@ -24,8 +22,6 @@
 //</section>
 //
 // Styleguide 5.1.1
-
-
 section.hero-unit {
   @include responsive-padding("vert", $base-padding);
   position: relative;
@@ -59,11 +55,9 @@ section.hero-unit {
     max-height: rem-calc(850);
     padding: 0;
   }
-
   body.admin-bar section.hero-unit.full-height {
     height: calc(100vh - 132px);
   }
-
   .hero-unit.full-height {
     height: calc(100vh - 100px);
   }

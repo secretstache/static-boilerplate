@@ -2,30 +2,30 @@
 <html class="no-js" lang="en">
 
 <head>
-	<meta charset="utf-8" />
-	<meta http-equiv="x-ua-compatible" content="ie=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>{{meta_title}}</title>
-	<link rel="stylesheet" href="{{root}}assets/styles/main.css">
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{meta_title}}</title>
+    <link rel="stylesheet" href="{{root}}assets/styles/main.css">
 </head>
 
-<body{{#if body_classes}} class="{{body_classes}}"{{/if}}>
-	<div class="off-canvas-wrapper">
-		{{> offcanvas}}
+<body {{#if body_classes}} class="{{body_classes}}" {{/if}}>
+    <div class="off-canvas-wrapper">
+        {{> offcanvas}}
 
-		<div class="off-canvas-content" data-off-canvas-content>
-			{{> site-header}}
-			{{#if show_hero_unit }}
-				{{> hero-unit}}
-			{{/if}}
-			<main class="content">
-				{{> body}}
-			</main>
-			{{> footer}}
-		</div>
-	</div>
+        <div class="off-canvas-content" data-off-canvas-content>
+            {{> site-header}}
+            {{#if show_hero_unit }}
+                {{> hero-unit}}
+            {{/if}}
+            <main class="content">
+                {{> body}}
+            </main>
+            {{> footer}}
+        </div>
+    </div>
 
-	<script src="{{root}}assets/scripts/main.js"></script>
+    <script src="{{root}}assets/scripts/main.js"></script>
 </body>
 
 </html>

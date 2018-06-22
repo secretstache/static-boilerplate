@@ -1,9 +1,9 @@
 header.section-header {
   @include responsive-margin("bottom");
-	margin-top: 0;
-	&.align-center {
-		text-align: center;
-	}
+  margin-top: 0;
+  &.align-center {
+    text-align: center;
+  }
 }
 
 .headline span {

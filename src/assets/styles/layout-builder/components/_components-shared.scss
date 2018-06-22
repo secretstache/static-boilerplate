@@ -36,6 +36,6 @@
   }
 }
 
-.has-1-cols header.component + .component.default {
+.has-1-cols header.component+.component.default {
   @include responsive-margin("top", $component-margin);
 }

@@ -21,7 +21,7 @@
   }
 }
 
-.dropdown.menu.medium-horizontal > li.is-dropdown-submenu-parent > a:after {
+.dropdown.menu.medium-horizontal>li.is-dropdown-submenu-parent>a:after {
   display: none;
 }
 
@@ -45,7 +45,6 @@
   height: rem-calc(2);
   position: absolute;
   left: 0;
-
   &1 {
     top: 0;
   }
