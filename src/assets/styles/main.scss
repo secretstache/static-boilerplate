@@ -51,26 +51,38 @@
 @include motion-ui-transitions;
 @include motion-ui-animations;
 
-@import "../../../node_modules/slick-carousel/slick/slick.scss";
-
 @import 'common/vars';
 @import 'common/styleguide';
 @import 'common/mixins';
-@import 'common/index';
+@import 'common/extends';
 @import 'common/typography';
-@import 'common/offcanvas';
-@import 'common/site-header';
-@import 'common/primary-navigation';
-@import 'common/hero-unit';
-@import 'common/footer';
+@import 'common/backgrounds';
+@import 'common/wordpress';
+@import 'common/index';
+
+@import 'global_elements/offcanvas';
+@import 'global_elements/site-header';
+@import 'global_elements/site-footer';
+@import 'global_elements/hero-unit';
+@import 'global_elements/button';
+@import 'global_elements/brand';
+@import 'global_elements/primary-navigation';
+@import 'global_elements/form';
+@import 'global_elements/socials';
+@import 'global_elements/hamburger';
+@import 'global_elements/searchbar';
+@import 'global_elements/modal';
 
 @import 'layout-builder/sections/sections-shared';
 
 @import 'layout-builder/cells/cells-shared';
 
 @import 'layout-builder/components/components-shared';
+@import 'layout-builder/components/block-grid';
 @import 'layout-builder/components/header';
+@import 'layout-builder/components/default';
 @import 'layout-builder/components/buttons';
 @import 'layout-builder/components/video';
-@import 'layout-builder/components/block-grid';
 @import 'layout-builder/components/carousel';
+
+

@@ -1,0 +1,53 @@
+section.hero-unit {
+  @include responsive-padding("vert", $base-padding);
+  position: relative;
+  z-index: 200;
+  height: rem-calc(145);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+  .grid-container {
+    width: 100%;
+  }
+
+  .grid-x {
+    position: relative;
+    z-index: 10;
+  }
+
+
+  //video background
+  &.bg-video {
+    background-color: $black;
+  }
+
+  .video {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    .responsive-embed {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      right: 0;
+      transform: translateY(-50%);
+    }
+
+    video {
+      width: 100%;
+      min-width: 100%;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
+}

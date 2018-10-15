@@ -1,0 +1,140 @@
+$offcanvas-sizes: (
+    small: 100%,
+);
+$offcanvas-background: $white;
+$offcanvas-background-opacity: 1;
+$offcanvas-links-color: $black;
+$offcanvas-text-color: $black;
+
+//fix to remove scrollbars when off-canvas menu is opened
+html, body {
+    overflow-x: hidden;
+}
+
+//off-canvas content
+.off-canvas {
+    display: flex;
+    flex-direction: column;
+    background: rgba($offcanvas-background, $offcanvas-background-opacity);  
+    color: $offcanvas-text-color;
+    overflow: auto;
+    padding: rem-calc(35 0);
+
+    //color of the links 
+    a:link, a:visited {
+        color: $offcanvas-links-color;
+    }
+
+    //off-canvas close button styles
+    .close-button {
+        z-index: 10;  
+        position: static;  
+        width: rem-calc(30);
+        display: block;
+    }
+
+}
+
+
+//page content
+.off-canvas-content {
+    min-height: 100vh;
+
+    //if the off-canvas is opened, reveal the overlay
+    &[class*="is-open"]:after {
+        visibility: visible;
+        opacity: 1;
+        transition: opacity 0.5s;
+    }
+}
+
+
+//off-canvas default reveal effects overrides
+.position-left    { @include off-canvas-position(left,   horizontal); }
+.position-right   { @include off-canvas-position(right,  horizontal); }
+.position-top     { @include off-canvas-position(top,    vertical); }
+.position-bottom  { @include off-canvas-position(bottom, vertical); }
+
+
+//off-canvas scale effect
+.offcanvas-scale  {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transform: scale(0.9);
+    transition: transform 0.2s, opacity 0.2s, visibility 0s 0.2s;
+
+    &.is-open {
+        visibility: visible;
+        opacity: 1;
+        transform: scale(1);
+        transition: transform 0.4s, opacity 0.4s;
+    }
+}
+
+
+//off-canvas perspective effect
+.offcanvas-perspective {
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 25%; //to avoid overlapping with the page content
+}
+
+.offcanvas-perspective-inner {
+    position: relative;
+    top: -100px;
+    transition: top 0.4s;
+}
+
+.is-open {
+    .offcanvas-perspective-inner {
+        top: 0;
+    }
+}
+
+.off-canvas-content-perspective {
+    transform: perspective(0) translateY(0) translateZ(0);
+    background: $white;
+    z-index: 100;
+    position: relative;
+
+    &[class*="is-open"] {
+        position: fixed;
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        cursor: pointer;
+        backface-visibility: visible;
+        transform: perspective(500px) translateY(100%) translateZ(-500px);
+        transition: 0.4s;
+        
+    }
+}
+
+.position-right.is-transition-push {
+  box-shadow: 10px 0 20px 20px rgba(0, 0, 0, 0.29);
+}
+
+//custom width 
+.custom-width {
+    width: 90%;
+}
+
+.custom-width-page-content {
+    &.is-open-left.has-transition-push {
+        transform: translateX(100%);
+    }
+    &.is-open-right.has-transition-push {
+      transform: translateX(-100%);
+  }
+}
+
+.off-canvas.is-transition-overlap {
+    z-index: 999;
+}

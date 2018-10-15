@@ -1,0 +1,27 @@
+.site-header {
+  z-index: 300;
+  background: $white;
+
+  .sticky {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.2s ease-in-out;
+    background: $white;
+    z-index: 999;
+
+    > .grid-container {
+      width: 100%;
+    }
+
+    @include breakpoint(medium) {
+      height: rem-calc(95) !important;
+    }
+  }
+
+  .is-stuck {
+    background: $white;
+    height: rem-calc(60) !important;
+  }
+
+}
