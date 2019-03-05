@@ -1,11 +1,10 @@
-header.section-header {
-  @include responsive-margin("bottom");
-  margin-top: 0;
+header.component {
   &.align-center {
     text-align: center;
   }
+
+  .headline span {
+    display: block;
+  }
 }
 
-.headline span {
-  display: block;
-}

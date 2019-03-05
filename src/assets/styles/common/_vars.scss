@@ -1,10 +1,4 @@
 // colors
-$primary-color: #1779ba;
-$secondary-color: #767676;
-$success-color: #3adb76;
-$warning-color: #ffae00;
-$alert-color: #cc4b37;
-$grey-light: #eeeeee;
 
 // Typography
 $primary-font-family: $body-font-family; // from F6 settings
@@ -12,7 +6,7 @@ $primary-font-color: $black; // from F6 settings
 $reverse-font-color: $white; // from F6 settings
 $default-font-size: rem-calc(18);
 
-// styleguide:ignore:start
+
 // Utility
 $max-width: rem-calc(1280);
 $header-height: rem-calc(60); // If applicable
@@ -33,4 +27,3 @@ $panel-z-index: 9999 !default;
 $panel-shadow: 0.01em 0 0.5em darken($panel-background, 30%) !default;
 $panel-links-color: $white !default;
 $panel-close-button-bg: $primary-color;
-// styleguide:ignore:end

@@ -1,0 +1,32 @@
+.hamburger {
+    display: block;
+    width: rem-calc(25);
+    min-width: rem-calc(25);
+    height: rem-calc(21);
+    border: none;
+    background: none;
+    outline: none;
+    cursor: pointer;
+    position: relative;
+}
+
+.hamburger-line {
+    height: rem-calc(3);
+    background: $blue;
+    width: 100%;
+    display: block;
+    position: absolute;
+
+    &.hamburger-line1 {
+        top: 0;
+    }
+
+    &.hamburger-line2 {
+        top: 50%;
+        margin-top: -1.5px;
+    }
+
+    &.hamburger-line3 {
+        bottom: 0;
+    }
+}

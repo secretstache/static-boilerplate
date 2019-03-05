@@ -5,14 +5,11 @@
         "indent_size": 2
     },
     "preserve_newlines": true,
-    "max_preserve_newlines": 2,
-    "unformatted": [],
-    "beautify.language": {
-        "js": {
-            "type": ["javascript", "json"],
-            "filename": [".jshintrc", ".jsbeautifyrc"],
-            "ext": ["js", "json", "jsx"]
-        },
-        "css": ["css", "scss"]
-    }
+    "max_preserve_newlines": 1,
+    "extra_liners": ["head", "body", "/html", "section"],
+    "indent_body_inner_html": true,
+    "indent_handlebars": true,
+    "indent_scripts": "keep",
+    "wrap_attributes": "preserve",
+    "brace_style": "none,preserve-inline"
 }

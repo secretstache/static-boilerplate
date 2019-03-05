@@ -12,8 +12,6 @@ import fs from 'fs';
 import webpackStream from 'webpack-stream';
 import webpack2 from 'webpack';
 import named from 'vinyl-named';
-import styleguide from 'sc5-styleguide';
-
 
 // Load all Gulp plugins into one variable
 const $ = plugins();
@@ -29,12 +27,9 @@ function loadConfig() {
 	return yaml.load(ymlFile);
 }
 
-gulp.task('styleguide',
-	gulp.series(styleguideGenerate, styleguideApply, styleguideImages, styleguideFonts, styleguideCss ));
-
 // Build the "dist" folder by running all of the below tasks
 gulp.task('build',
-	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, fonts, copy), 'styleguide'));
+	gulp.series(clean, gulp.parallel(pages, sass, javascript, images, fonts, copy)));
 
 // Build the site, run the server, and watch for file changes
 gulp.task('default',
@@ -78,50 +73,6 @@ function pages() {
 function resetPages(done) {
 	panini.refresh();
 	done();
-}
-
-
-function styleguideGenerate() {
-	return gulp.src(PATHS.styleSrc)
-	.pipe(styleguide.generate({
-		title: 'Styleguide',
-		server: false,
-		rootPath: PATHS.style,
-		overviewPath: 'styleguide.md',
-		appRoot: '/styleguide',
-		rootPath: '/styleguide',
-		commonClass: 'sg-common',
-		disableEncapsulation: true,
-		extraHead: [
-			'<link rel="stylesheet" href="assets/styles/styleguide.css"><style>body {font-size:18px; margin: 0; padding: 0; font-family: "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;} .sg-design {display: none;} .sg-footer {display: none;} .sg-search-field {margin-top: 20px;height: 40px;padding: 0 10px;} .sg {box-sizing: border-box;}.sg.sg-section .sg.sg-section-partial {padding: 3em 1em;}</style>'
-		]
-	  }))
-	.pipe(gulp.dest(PATHS.style));
-}
-
-
-function styleguideApply() {
-	return gulp.src('src/assets/styles/main.scss')
-	.pipe($.sass({
-	  includePaths: PATHS.sass
-	}).on('error', $.sass.logError))
-	.pipe(styleguide.applyStyles())
-	.pipe(gulp.dest(PATHS.style));
-}
-
-function styleguideImages() {
-	return gulp.src('src/assets/images/**/*')
-	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/images'));
-}
-
-function styleguideFonts() {
-	return gulp.src('src/assets/fonts/**/*')
-	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/fonts'));
-}
-
-function styleguideCss() {
-	return gulp.src(PATHS.dist + '/styleguide/styleguide.css')
-	.pipe(gulp.dest(PATHS.dist + '/styleguide/assets/styles'));
 }
 
 
@@ -212,10 +163,10 @@ function reload(done) {
 // Watch for changes to static assets, pages, Sass, and JavaScript
 function watch() {
 	gulp.watch(PATHS.assets, copy);
-	gulp.watch('src/assets/fonts/**/*').on('all', gulp.series(fonts, styleguideFonts));;
+	gulp.watch('src/assets/fonts/**/*').on('all', gulp.series(fonts));
 	gulp.watch('src/pages/**/*.html').on('all', gulp.series(pages, browser.reload));
 	gulp.watch('src/{layouts,partials}/**/*.html').on('all', gulp.series(resetPages, pages, browser.reload));
-	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, styleguideGenerate, styleguideApply, styleguideCss));
+	gulp.watch('src/assets/styles/**/*.scss').on('all', gulp.series(sass, browser.reload));
 	gulp.watch('src/assets/scripts/**/*.js').on('all', gulp.series(javascript, browser.reload));
-	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, styleguideImages, browser.reload));
+	gulp.watch('src/assets/images/**/*').on('all', gulp.series(images, browser.reload));
 }

@@ -1,118 +1,18 @@
-%html {
+html {
   font-size: 100%;
   box-sizing: border-box;
   *,
   *:before,
   *:after {
-    box-sizing: inherit;
+      box-sizing: inherit;
   }
 }
 
-// Styles for html element in theme
-html {
-  @extend %html;
-}
-
-// Extend common body styles
-%body {
+body {
+  background: $outer-bg-color;
   font-family: $primary-font-family;
   margin: 0;
   font-size: $default-font-size;
   color: $primary-font-color;
   font-weight: normal;
-}
-
-// This is for styleguide only
-.sg-common {
-  @extend %html;
-  @extend %body;
-}
-
-body {
-  background: $outer-bg-color;
-  @extend %body;
-}
-
-img[class*="wp-image-"],
-img[class^="wp-image-"] {
-  @include responsive-margin("bottom", $base-margin/2);
-}
-
-.alignnone {
-  margin-left: 0;
-  margin-right: 0;
-  max-width: 100%;
-  height: auto;
-}
-
-.aligncenter {
-  @include responsive-margin("bottom", $base-margin/2);
-  display: block;
-  height: auto;
-}
-
-.alignleft,
-.alignright {
-  height: auto;
-}
-
-@include breakpoint(medium) {
-  // Only float if not on an extra small device
-  .alignleft {
-    float: left;
-    margin-right: ($base-margin / 2);
-  }
-  .alignright {
-    float: right;
-    margin-left: ($base-margin / 2);
-  }
-}
-
-.bg-grey-light {
-  background-color: $grey-light;
-}
-
-.bg-dark,
-.bg-image {
-  color: $reverse-font-color;
-}
-
-.overlay {
-  background: rgba(0, 0, 0, 0.5);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-@include breakpoint(medium) {
-  section[class^="thin-"] .main.grid-x,
-  [class*="thin-"] .main.grid-x {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  section.thin-90 .main.grid-x {
-    width: 90%;
-  }
-  section.thin-80 .main.grid-x {
-    width: 80%;
-  }
-  section.thin-70 .main.grid-x {
-    width: 70%;
-  }
-  section.thin-60 .main.grid-x {
-    width: 60%;
-  }
-  section.thin-50 .main.grid-x {
-    width: 50%;
-  }
-}
-
-@include breakpoint(small only) {
-  // .grid-margin-x.align-left,
-  // .grid-margin-x.align-justify,
-  // .grid-margin-x.align-right {
-  //   justify-content: center;
-  // }
 }
